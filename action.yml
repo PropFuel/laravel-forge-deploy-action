@@ -1,0 +1,30 @@
+name: Deploy to Laravel Forge
+description: Deploy to Laravel Forge with GitHub Actions
+branding:
+  icon: zap
+  color: green
+inputs:
+  forge-api-token:
+    description: Your Forge API Token
+    required: true
+  forge-server-id:
+    description: Your Forge Server ID
+    required: true
+  forge-site-id:
+    description: Your Forge Site ID
+    required: true
+  env-file-path:
+    description: Path to the .env file
+    required: false
+  deploy-script-path:
+    description: Path to the deploy script
+    required: false
+runs:
+  using: docker
+  image: Dockerfile
+  args:
+    - ${{ inputs.forge-api-token }}
+    - ${{ inputs.forge-server-id }}
+    - ${{ inputs.forge-site-id }}
+    - ${{ inputs.env-file-path }}
+    - ${{ inputs.deploy-script-path }}
