@@ -20,11 +20,14 @@ inputs:
     description: Path to the deploy script
     required: false
 runs:
-  using: docker
-  image: Dockerfile
-  args:
-    - ${{ inputs.forge-api-token }}
-    - ${{ inputs.forge-server-id }}
-    - ${{ inputs.forge-site-id }}
-    - ${{ inputs.env-file-path }}
-    - ${{ inputs.deploy-script-path }}
+  using: composite
+  steps:
+    - name: Run the deploy script
+      run: |
+        ${{ github.action_path }}/script.sh \
+          "${{ inputs.forge-api-token }}" \
+          "${{ inputs.forge-server-id }}" \
+          "${{ inputs.forge-site-id }}" \
+          "${{ inputs.env-file-path }}" \
+          "${{ inputs.deploy-script-path }}"
+      shell: bash
