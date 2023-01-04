@@ -7,7 +7,7 @@ This action triggers the deployment of a Laravel Forge site. It can optionally u
 Add the following entry to your Github workflow YAML file with the required inputs:
 
 ```yaml
-uses: PropFuel/laravel-forge-deploy-action@v1.0.0
+uses: PropFuel/laravel-forge-deploy-action@v1.0.1
 with:
   forge-api-token: your-forge-api-token
   forge-server-id: your-forge-server-id
@@ -49,7 +49,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Deploy
-        uses: PropFuel/laravel-forge-deploy-action@v1.0.0
+        uses: PropFuel/laravel-forge-deploy-action@v1.0.1
         with:
           forge-api-token: ${{ secrets.FORGE_API_TOKEN }}
           forge-server-id: ${{ secrets.FORGE_SERVER_ID }}
@@ -87,7 +87,7 @@ jobs:
           echo "FOO=bar" >> .env
 
       - name: Deploy
-        uses: PropFuel/laravel-forge-deploy-action@v1.0.0
+        uses: PropFuel/laravel-forge-deploy-action@v1.0.1
         with:
           forge-api-token: ${{ secrets.FORGE_API_TOKEN }}
           forge-server-id: ${{ matrix.serverId }}
