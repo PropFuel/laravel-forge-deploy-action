@@ -42,6 +42,7 @@ function api_request {
         --silent \
         "https://forge.laravel.com/api/v1/servers/$server_id/sites/$site_id/$endpoint")
     
+    # Check for an HTTP response code of 200
     if [[ "$code" -ne 200 ]]; then
         echo "Forge API error encountered."
         exit 1
